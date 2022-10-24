@@ -29,7 +29,7 @@ namespace AgendaTarefas.Controllers
             {
                 data = new DatasViewModel();
                 data.Data = dataAtual.ToShortDateString();
-                data.Identificadores = "colapse" + dataAtual.ToShortDateString().Replace("/", "");
+                data.Identificadores = "collapse" + dataAtual.ToShortDateString().Replace("/", "");
                 ListaDatas.Add(data);
                 qtdDias = qtdDias + 1;
                 dataAtual = dataAtual.AddDays(qtdDias);
