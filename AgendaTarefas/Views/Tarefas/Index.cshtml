@@ -22,7 +22,7 @@
             </div>
             <div id="@item.Identificadores"class="collapse show" data-parent="#painelTarefas">
                 <div class="card-body">
-                  VIEW COMPONENT
+                   @await Component.InvokeAsync("ListaTarefas",item.Data)
                 </div>
             </div>
         </div>
