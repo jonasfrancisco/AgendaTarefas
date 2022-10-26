@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AgendaTarefas.Controllers
 {
@@ -36,6 +37,26 @@ namespace AgendaTarefas.Controllers
                 
             }
             return ListaDatas;
+        }
+        [HttpGet]
+        public IActionResult CriarTarefa(string dataTarefa)
+        {
+            Tarefa tarefa = new Tarefa
+            {
+                Data = dataTarefa
+            };
+            return View(tarefa);
+        }
+        [HttpPost]
+        public async Task<IActionResult>CriarTarefa(Tarefa tarefa)
+        {
+            if(ModelState.IsValid)
+            {
+                _Contexto.Tarefas.Add(tarefa);
+                await _Contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(tarefa);
         }
     }
 }
