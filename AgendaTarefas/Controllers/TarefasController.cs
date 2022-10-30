@@ -79,7 +79,14 @@ namespace AgendaTarefas.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(tarefa);
-
+        }
+        [HttpPost]
+        public async Task<JsonResult> ExcluirTarefa(int tarefaId)
+        {
+            Tarefa tarefa = await _Contexto.Tarefas.FindAsync(tarefaId);
+            _Contexto.Tarefas.Remove(tarefa);
+            await _Contexto.SaveChangesAsync();
+            return Json(true);
 
         }
 
